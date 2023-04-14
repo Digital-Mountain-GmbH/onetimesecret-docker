@@ -3,7 +3,7 @@ RUN mkdir /app/
 RUN apt update && apt install git -y
 RUN git clone https://github.com/onetimesecret/onetimesecret.git
 WORKDIR /app/onetimesecret
-RUN ls -ahl
+RUN ls -ahl /app/
 RUN bundle config set --local frozen 'true'
 RUN  bundle install
 RUN  bin/ots init
