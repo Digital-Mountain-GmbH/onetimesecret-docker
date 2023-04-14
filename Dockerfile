@@ -3,7 +3,8 @@ RUN mkdir /app/
 RUN apt update && apt install git -y
 RUN git clone https://github.com/onetimesecret/onetimesecret.git
 WORKDIR /app/onetimesecret
-RUN  bundle install --frozen
+RUN bundle config set --local frozen 'true'
+RUN  bundle install
 RUN  bin/ots init
 RUN  sudo mkdir /var/log/onetime /var/run/onetime /var/lib/onetime
 RUN  sudo chown ots /var/log/onetime /var/run/onetime /var/lib/onetime
