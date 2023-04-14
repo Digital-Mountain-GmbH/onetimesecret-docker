@@ -1,6 +1,6 @@
 FROM ruby:3.2-slim-bullseye
 RUN mkdir /app/
-RUN apt install git
+RUN apt update && apt install git -y
 RUN git clone https://github.com/onetimesecret/onetimesecret.git
 WORKDIR /app/onetimesecret
 RUN  bundle install --frozen
