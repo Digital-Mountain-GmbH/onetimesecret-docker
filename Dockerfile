@@ -7,11 +7,11 @@ RUN ls -ahl /app/onetimesecret
 WORKDIR /app/onetimesecret
 RUN git pull
 
-
+RUN gem install bundler:2.3.17
 RUN bundle config set --local frozen 'true'
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'dev'
-RUN bundle install --deployment --without dev
+RUN bundle install
 
 RUN  bin/ots init
 RUN  sudo mkdir /var/log/onetime /var/run/onetime /var/lib/onetime
