@@ -11,7 +11,7 @@ RUN git pull
 RUN bundle config set --local frozen 'true'
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'dev'
-RUN  bundle install --deployment --without dev
+RUN bundle install --deployment --without dev
 
 RUN  bin/ots init
 RUN  sudo mkdir /var/log/onetime /var/run/onetime /var/lib/onetime
