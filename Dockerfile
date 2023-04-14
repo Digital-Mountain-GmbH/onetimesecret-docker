@@ -2,12 +2,13 @@ FROM ruby:2.6-slim AS builder
 RUN mkdir /app/
 WORKDIR /app/
 RUN apt update && apt install git -y
-RUN git clone https://github.com/onetimesecret/onetimesecret.git
+RUN git clone https://github.com/Digital-Mountain-GmbH/onetimesecret-x84_64/
 RUN ls -ahl /app/onetimesecret
 WORKDIR /app/onetimesecret
 RUN git pull
 
 RUN gem install bundler:2.3.17
+RUN bundle lock --add-platform x86_64-linux
 RUN bundle config set --local frozen 'true'
 RUN bundle config set --local deployment 'true'
 RUN bundle config set --local without 'dev'
