@@ -7,7 +7,7 @@ RUN ls -ahl /app/onetimesecret
 WORKDIR /app/onetimesecret
 RUN git pull
 RUN bundle config set --local frozen 'true'
-RUN  bundle install
+RUN  bundle install --deployment --without dev
 RUN  bin/ots init
 RUN  sudo mkdir /var/log/onetime /var/run/onetime /var/lib/onetime
 RUN  sudo chown ots /var/log/onetime /var/run/onetime /var/lib/onetime
