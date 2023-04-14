@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bullseye AS builder
+FROM ruby:2.6-slim AS builder
 RUN mkdir /app/
 WORKDIR /app/
 RUN apt update && apt install git -y
