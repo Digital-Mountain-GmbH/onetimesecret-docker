@@ -1,7 +1,13 @@
 FROM ruby:2.6-slim AS builder
-RUN mkdir /app/
 WORKDIR /app/
-RUN apt update && apt install git -y
+
+ARG PACKAGES="build-essential autoconf m4 sudo git"
+ARG ADDITIONAL_PACKAGES="curl netcat vim-tiny less redis-tools iproute2 iputils-ping iftop pktstat pcp iptraf"
+RUN set -eux && \
+    apt-get update && \
+    apt-get install -y $PACKAGES && \
+    apt-get install -y $ADDITIONAL_PACKAGES
+
 RUN git clone https://github.com/Digital-Mountain-GmbH/onetimesecret-x84_64/ .
 
 RUN gem install bundler:2.3.17
